@@ -16,15 +16,18 @@
 #define TERM LSFT(LCTL(KC_GRAVE))
 
 enum adb_layers {
-  _BASE,
+  _QWERTY,
+  _COLEMAK,
   _RAISE
 };
 
 enum adb_keycodes {
-  BASE = SAFE_RANGE,
+  QWERTY = SAFE_RANGE,
+  COLEMAK,
   RAISE
 };
 
+#define COLEMAK MO(_COLEMAK)
 #define RAISE MO(_RAISE)
 #define ____ KC_TRNS
 
@@ -45,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 #elif defined M0116_ANSI
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_m0116_ansi(
+    [_QWERTY] = LAYOUT_m0116_ansi(
                                                SLP,
     KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS,   KC_EQL,   KC_BSPC,          RAISE,   KC_EQL, KC_PSLS, KC_PAST,
     KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC,   KC_RBRC,                    KC_P7,   KC_P8,  KC_P9,   KC_PPLS,
@@ -65,20 +68,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 #elif defined M0118_ISO
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_m0118_iso(
+    [_QWERTY] = LAYOUT_m0118_iso(
                                               SLP,
-    KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,    KC_0,    KC_MINS,   KC_EQL,   KC_BSPC,          TERM,    KC_EQL, KC_PSLS, KC_PAST,
+    KC_GESC, KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,    KC_0,    KC_MINS,   KC_EQL,   KC_BSPC,          TERM,    KC_EQL, KC_PSLS, KC_PAST,
     KC_TAB,  KC_Q,    KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,    KC_LBRC,   KC_RBRC,  KC_ENT,           KC_P7,   KC_P8,  KC_P9,   KC_PPLS,
-    KC_LCAP, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN, KC_QUOT,   KC_BSLS,                    KC_P4,   KC_P5,  KC_P6,   KC_PMNS,
+    COLEMAK, KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN, KC_QUOT,   KC_BSLS,                    KC_P4,   KC_P5,  KC_P6,   KC_PMNS,
     KC_LSFT, RAISE,   KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH,   KC_RSFT,  KC_UP,            KC_P1,   KC_P2,  KC_P3,
     KC_LCTL, KC_LALT, KC_LGUI,                KC_SPC,                                  KC_RGUI, KC_LEFT,   KC_RGHT,  KC_DOWN,          KC_P0,           KC_PDOT, KC_PENT
+    ),
+
+    [_COLEMAK] = LAYOUT_m0118_iso(
+                                              ____,
+    ____,    ____,    ____,   ____,   ____,   ____,   ____,   ____,   ____,   ____,    ____,    ____,     ____,  ____,                 ____,   ____,    ____,    ____,
+    ____,    KC_Q,    KC_W,   KC_F,   KC_P,   KC_G,   KC_J,   KC_L,   KC_U,   KC_Y,    KC_SCLN, ____,     ____,  ____,                 ____,   ____,    ____,    ____,
+    ____,    KC_A,    KC_R,   KC_S,   KC_T,   KC_D,   KC_H,   KC_N,   KC_E,   KC_I,    KC_O,    ____,     ____,                        ____,   ____,    ____,    ____,
+    ____,    RAISE,   KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_K,   KC_M,   ____,    ____,    ____,     ____,  ____,                 ____,   ____,    ____,
+    ____,    ____,    ____,                   ____,                                    ____,    ____,     ____,  ____,                 ____,            ____,    ____
     ),
 
     [_RAISE] = LAYOUT_m0118_iso(
                                               ____,
     ____,    APP1,    APP2,   APP3,   APP4,   APP5,   APP6,   APP7,   APP8,   ____,    ____,    ____,      ____,     KC_DEL,           ____,   ____,  ____,   KC_MUTE,
     ____,    ____,    ____,   ____,   ____,   ____,   ____,   ____,   ____,   ____,    ____,    ____,      ____,     ____,             ____,   ____,  ____,   KC_VOLU,
-    ____,    ____,    ____,   ____,   ____,   ____,   ____,   ____,   ____,   ____,    ____,    ____,      KC_GRAVE,                   ____,   ____,  ____,   KC_VOLD,
+    ____,    ____,    ____,   ____,   ____,   ____,   ____,   ____,   ____,   ____,    ____,    ____,      ____,                       ____,   ____,  ____,   KC_VOLD,
     ____,    ____,    ____,   ____,   ____,   ____,   ____,   ____,   ____,   ____,    ____,    ____,      ____,     KC_PGUP,          ____,   ____,  ____,
     ____,    ____,    ____,                   ____,                                    ____,    KC_HOME,   KC_END,   KC_PGDOWN,        ____,          ____,   ____
     ),
