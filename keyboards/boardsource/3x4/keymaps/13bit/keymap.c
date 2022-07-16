@@ -7,8 +7,8 @@ enum layers {
 };
 
 // Readability keycodes
-#define LOWER   LT(_LOWER, KC_DOT)
-#define RAISE   LT(_RAISE, KC_ENT)
+#define LOWER LT(_LOWER, KC_DOT)
+#define RAISE LT(_RAISE, KC_ENT)
 
 // const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -30,75 +30,49 @@ enum layers {
 
 // };
 
-enum custom_keycodes {
-    DB = SAFE_RANGE,
-    DRL,
-    DP,
-    DCL,
-    GBG,
-    GBH
+enum custom_keycodes { BA = SAFE_RANGE, BS, BC };
+
+#define LFT LCTL(LALT(KC_D))
+#define LFTT LCTL(LALT(KC_E))
+
+#define CT LCTL(LALT(KC_F))
+#define MAX LCTL(LALT(KC_ENTER))
+
+#define RT LCTL(LALT(KC_G))
+#define RTT LCTL(LALT(KC_T))
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+    [_MAIN] = LAYOUT(KC_MUTE, BA, LFTT, LFT, KC_VOLD, BS, MAX, CT, KC_VOLU, BC, RTT, RT)
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    case DB:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("db"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case DRL:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("drl"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case DP:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("dp"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case DCL:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("dcl"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case GBG:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("gbg"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case GBH:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING("gbh"SS_TAP(X_ENT));
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
+        case BA:
+            if (record->event.pressed) {
+                // when keycode QMKBEST is pressed
+                SEND_STRING("ba" SS_TAP(X_ENT));
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+        case BS:
+            if (record->event.pressed) {
+                // when keycode QMKBEST is pressed
+                SEND_STRING("bs" SS_TAP(X_ENT));
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+        case BC:
+            if (record->event.pressed) {
+                // when keycode QMKBEST is pressed
+                SEND_STRING("bc" SS_TAP(X_ENT));
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
     }
     return true;
-};
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-  [_MAIN] = LAYOUT(
-  KC_MUTE,    DB,     DCL,    _______,
-  KC_VOLD,    DRL,    GBG,    _______,
-  KC_VOLU,    DP,     GBH,    _______
-  )
-
 };
