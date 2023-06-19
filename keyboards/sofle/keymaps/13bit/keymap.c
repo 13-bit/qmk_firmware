@@ -17,7 +17,8 @@ enum custom_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
-#define TERM LCTL(KC_GRAVE)
+#define VSC_TERM LCTL(KC_GRAVE)
+#define REG_TERM LGUI(KC_ENT)
 #define LNCH LGUI(KC_SPC)
 #define MCTL LCTL(KC_UP)
 
@@ -33,16 +34,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   K  |   M  |   ,  |   .  |   /  | RGUI |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | Term  | MCtl |
- *            |      |      |      |      |/       /         \      \ |      |      |       |      |
- *            `----------------------------------'           '------''---------------------------'
+ *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | VS Code | MCtl |
+ *            |      |      |      |      |/       /         \      \ |      |      | Term    |      |
+ *            `----------------------------------'           '------''-------------------------------'
  */
 [_MACOS] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,  KC_7, KC_8,    KC_9,   KC_0,    KC_BSPC,
-  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,  KC_L, KC_U,    KC_Y,   KC_SCLN, KC_DEL,
-  KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,  KC_N, KC_E,    KC_I,   KC_O,    KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  XXXXXXX,     XXXXXXX, KC_K,  KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RGUI,
-                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, TERM,    MCTL
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,  KC_7, KC_8,     KC_9,   KC_0,    KC_BSPC,
+  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,  KC_L, KC_U,     KC_Y,   KC_SCLN, KC_DEL,
+  KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,  KC_N, KC_E,     KC_I,   KC_O,    KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  XXXXXXX,     XXXXXXX, KC_K,  KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RGUI,
+                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, VSC_TERM, MCTL
 ),
 
 /*
@@ -56,16 +57,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   K  |   M  |   ,  |   .  |   /  | RCTR |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | Term  | MCtl |
- *            |      |      |      |      |/       /         \      \ |      |      |       |      |
- *            `----------------------------------'           '------''---------------------------'
+ *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | VS Code | Rego |
+ *            |      |      |      |      |/       /         \      \ |      |      | Term    | Term |
+ *            `----------------------------------'           '------''-------------------------------'
  */
 [_LIN_WIN] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,  KC_7, KC_8,    KC_9,   KC_0,    KC_BSPC,
-  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,  KC_L, KC_U,    KC_Y,   KC_SCLN, KC_DEL,
-  KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,  KC_N, KC_E,    KC_I,   KC_O,    KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  XXXXXXX,     XXXXXXX, KC_K,  KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
-                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, TERM,    MCTL
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,  KC_7, KC_8,     KC_9,   KC_0,    KC_BSPC,
+  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,  KC_L, KC_U,     KC_Y,   KC_SCLN, KC_DEL,
+  KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,  KC_N, KC_E,     KC_I,   KC_O,    KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  XXXXXXX,     XXXXXXX, KC_K,  KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RCTL,
+                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, VSC_TERM, REG_TERM
 ),
 
 /* LOWER
@@ -80,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |      |      |      |     | /       /       \       \  |      |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
+ *            `----------------------------------'           '------''----------------------------'
  */
 [_LOWER] = LAYOUT(
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |      |      |      |      | /       /       \      \  |      |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
+ *            `----------------------------------'           '------''----------------------------'
  */
 [_RAISE] = LAYOUT(
   _______, _______, _______, _______, _______,  _______,                         _______, _______, _______, _______, _______ ,_______,
@@ -124,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |      |      |      |      | /       /       \      \  |      |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
+ *            `----------------------------------'           '------''----------------------------'
  */
   [_ADJUST] = LAYOUT(
   XXXXXXX, XXXXXXX,   XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX,                       RGB_TOG, RGB_RMOD, RGB_MOD, XXXXXXX, XXXXXXX, XXXXXXX,
