@@ -184,6 +184,9 @@ static void print_status_narrow(void) {
         default:
             oled_write_ln_P(PSTR("Undef"), false);
     }
+
+    oled_write_P(PSTR("\n\n\n"), false);
+    oled_write_ln_P(PSTR("13bit"), false);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
