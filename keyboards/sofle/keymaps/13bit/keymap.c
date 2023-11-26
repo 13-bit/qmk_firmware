@@ -19,8 +19,8 @@ enum custom_keycodes {
 
 #define VSC_TERM LCTL(KC_GRAVE)
 #define REG_TERM LGUI(KC_ENT)
+#define MAC_TERM LGUI(KC_ENT)
 #define LNCH LGUI(KC_SPC)
-#define MCTL LCTL(KC_UP)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -34,8 +34,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   K  |   M  |   ,  |   .  |   /  | RGUI |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | VS Code | MCtl |
- *            |      |      |      |      |/       /         \      \ |      |      | Term    |      |
+ *            | LCTR | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE | Lnch | VS Code | Mac  |
+ *            |      |      |      |      |/       /         \      \ |      |      | Term    | Term |
  *            `----------------------------------'           '------''-------------------------------'
  */
 [_MACOS] = LAYOUT(
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,  KC_L, KC_U,     KC_Y,   KC_SCLN, KC_DEL,
   KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,  KC_N, KC_E,     KC_I,   KC_O,    KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  XXXXXXX,     XXXXXXX, KC_K,  KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RGUI,
-                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, VSC_TERM, MCTL
+                    KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT,      KC_SPC,  RAISE, LNCH, VSC_TERM, MAC_TERM
 ),
 
 /*
@@ -117,9 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |QWERTY|COLEMK|      |      |      |                    |      |      |      |      |      |      |
+ * |      |MACOS |LINUX |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |MACWIN|      |      |      |-------.    ,-------|      |      |      |      |      |      |
+ * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -232,15 +232,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLD);
+            tap_code(KC_UP);
         } else {
-            tap_code(KC_VOLU);
+            tap_code(KC_DOWN);
         }
     } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_WH_D);
+            tap_code(KC_LEFT);
         } else {
-            tap_code(KC_WH_U);
+            tap_code(KC_RIGHT);
         }
     }
     return false;
