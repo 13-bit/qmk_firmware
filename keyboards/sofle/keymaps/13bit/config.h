@@ -11,6 +11,11 @@
 
 #define CUSTOM_LAYER_READ // if you remove this it causes issues - needs better guarding
 
+#ifdef ENCODER_RESOLUTION
+    #undef ENCODER_RESOLUTION
+#endif
+#define ENCODER_RESOLUTION 4
+
 // #define ENCODER_DIRECTION_FLIP
 
 #define RGBLIGHT_SLEEP
